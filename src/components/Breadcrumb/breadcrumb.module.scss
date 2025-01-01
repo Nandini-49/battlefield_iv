@@ -1,0 +1,30 @@
+.container {
+    height: 85px;
+    width: auto;
+    position: relative;
+    margin-left: 100px;
+    margin-top: 20px;
+    color: white;
+
+    .path {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+
+        svg {
+            padding: 0 10px;
+        }
+
+        p {
+            margin: 0;
+            padding: 0 12px;
+            font-size: 24px;
+        }
+    }
+
+    .heading {
+        font-size: 46px;
+        font-weight: 600;
+    }
+}
