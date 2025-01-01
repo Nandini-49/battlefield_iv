@@ -1,6 +1,6 @@
 import "./App.css";
 import Breadcrumb from "./components/Breadcrumb/Breadcrumb";
-import InfoBox from "./components/Breadcrumb/InfoBox/InfoBox";
+import InfoBox from "./components//InfoBox/InfoBox";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
