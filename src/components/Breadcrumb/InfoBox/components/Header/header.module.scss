@@ -1,0 +1,50 @@
+.container {
+    width: 100%;
+
+    .heading {
+        font-size: 36px;
+        font-weight: 600;
+        text-transform: none;
+    }
+
+    .description {
+        .info {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 18px;
+                position: relative;
+                top: -3px;
+                padding: 0px 15px;
+            }
+        }
+
+        .desc {
+            text-transform: none;
+            padding-right: 30%;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        text-transform: uppercase;
+        gap: 15px;
+
+        button {
+            text-transform: uppercase;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0;
+            padding: 10px 50px;
+        }
+
+        svg {
+            font-size: 18px;
+            height: 18px;
+            position: relative;
+            top: 2px;
+        }
+    }
+}

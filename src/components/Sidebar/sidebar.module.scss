@@ -6,11 +6,59 @@
     border-right: 1px solid rgba(255, 255, 255, 0.15);
     margin-right: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     .games {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 10px;
+
+        img {
+            height: 48px;
+            width: 40px;
+            opacity: 0.5;
+            transition: all ease 0.25s;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .others {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        padding-top: 20px;
+        cursor: pointer;
+
+        svg {
+            transition: all ease 0.3s;
+        }
+        svg:hover {
+            transform: scale(1.1);
+            transition: all ease 0.2s;
+            fill: gold;
+        }
+    }
+
+    .misc {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+        height: 100px;
+        position: relative;
+        bottom: -100px;
+        cursor: pointer;
+
+        svg {
+            height: 20px;
+        }
     }
 }
