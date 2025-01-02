@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    aspect-ratio: 1.82;
+    // background-color: white;
+    object-fit: cover;
+    position: relative;
+
+    img {
+        height: 43%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .title {
+        white-space: pre-line;
+        // font-size: 19px;
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: calc(100% - 43%);
+        // filter: blur(5px);
+
+        h3 {
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+            padding-left: 8%;
+            padding-top: 5%;
+        }
+    }
+}
