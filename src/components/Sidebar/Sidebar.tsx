@@ -17,31 +17,31 @@ const Sidebar: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.games}>
         <img
-          src="/src/assets/game1.png"
+          src="/assets/game1.png"
           alt="game1"
           style={activeGame === 1 ? activeStyle : {}}
           onClick={() => setActiveGame(1)}
         />
         <img
-          src="/src/assets/game2.png"
+          src="/assets/game2.png"
           alt="game2"
           style={activeGame === 2 ? activeStyle : {}}
           onClick={() => setActiveGame(2)}
         />
         <img
-          src="/src/assets/game3.png"
+          src="/assets/game3.png"
           alt="game3"
           style={activeGame === 3 ? activeStyle : {}}
           onClick={() => setActiveGame(3)}
         />
         <img
-          src="/src/assets/game4.png"
+          src="/assets/game4.png"
           alt="game4"
           style={activeGame === 4 ? activeStyle : {}}
           onClick={() => setActiveGame(4)}
         />
         <img
-          src="/src/assets/game5.png"
+          src="/assets/game5.png"
           alt="game5"
           style={activeGame === 5 ? activeStyle : {}}
           onClick={() => setActiveGame(5)}
