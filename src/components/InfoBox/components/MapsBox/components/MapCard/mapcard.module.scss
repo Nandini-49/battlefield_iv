@@ -1,32 +1,80 @@
 .container {
     width: 100%;
     aspect-ratio: 1.82;
-    // background-color: white;
-    object-fit: cover;
     position: relative;
-
+    overflow: hidden; // Ensure nothing overflows the container
+    transition: all 0.3s ease; // Transition for container resizing
+  
     img {
-        height: 43%;
-        width: 100%;
-        object-fit: cover;
+      height: 43%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out; // Smooth image zoom effect on hover
     }
-
+  
     .title {
-        white-space: pre-line;
-        // font-size: 19px;
-        position: absolute;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        height: calc(100% - 43%);
-        // filter: blur(5px);
-
-        h3 {
-            padding: 0;
-            margin: 0;
-            font-size: 15px;
-            padding-left: 8%;
-            padding-top: 5%;
-        }
+      white-space: pre-line;
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: calc(100% - 43%);
+      padding: 10px;
+      transition: all 0.3s ease; // Transition for the text block
+  
+      h3 {
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        padding-left: 8%;
+        padding-top: 5%;
+        color: white;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s forwards 0.5s; // Fade-in animation for the title
+      }
     }
-}
+  
+    // Media Queries for responsiveness
+  
+    @media (max-width: 768px) {
+      aspect-ratio: 1.2;
+      
+      img {
+        height: 50%;
+      }
+  
+      .title h3 {
+        font-size: 13px;
+        padding-left: 5%;
+        padding-top: 4%;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      aspect-ratio: 1.5;
+  
+      img {
+        height: 55%;
+      }
+  
+      .title h3 {
+        font-size: 12px;
+        padding-left: 4%;
+        padding-top: 3%;
+      }
+    }
+  }
+  
+  // Animation for the title (fadeInUp effect)
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

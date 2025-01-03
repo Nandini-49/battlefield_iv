@@ -1,50 +1,133 @@
 .container {
     width: 100%;
-
+  
     .heading {
-        font-size: 36px;
-        font-weight: 600;
-        text-transform: none;
+      font-size: 36px;
+      font-weight: 600;
+      text-transform: none;
     }
-
+  
     .description {
-        .info {
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-
-            img {
-                height: 18px;
-                position: relative;
-                top: -3px;
-                padding: 0px 15px;
-            }
-        }
-
-        .desc {
-            text-transform: none;
-            padding-right: 30%;
-        }
-    }
-
-    .buttons {
+      .info {
+        font-size: 18px;
         display: flex;
-        text-transform: uppercase;
-        gap: 15px;
-
-        button {
-            text-transform: uppercase;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0;
-            padding: 10px 50px;
+        align-items: center;
+  
+        img {
+          height: 18px;
+          position: relative;
+          top: -3px;
+          padding: 0px 15px;
         }
-
-        svg {
-            font-size: 18px;
-            height: 18px;
-            position: relative;
-            top: 2px;
-        }
+      }
+  
+      .desc {
+        text-transform: none;
+        padding-right: 30%;
+      }
     }
-}
+  
+    .buttons {
+      display: flex;
+      text-transform: uppercase;
+      gap: 15px;
+  
+      button {
+        text-transform: uppercase;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0;
+        padding: 10px 50px;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background-color: rgba(0, 162, 255, 0.2);  // Bluish glow effect on hover
+          box-shadow: 0 4px 12px rgba(0, 162, 255, 0.5);  // Bluish shine effect
+          cursor: pointer;
+        }
+      }
+  
+      svg {
+        font-size: 18px;
+        height: 18px;
+        position: relative;
+        top: 2px;
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.1);  // Slight scaling effect on hover
+        }
+      }
+    }
+  
+    // Media Queries for Responsiveness
+  
+    @media (max-width: 768px) {
+      .heading {
+        font-size: 28px;
+      }
+  
+      .description {
+        .info {
+          font-size: 16px;
+  
+          img {
+            height: 16px;
+            padding: 0 10px;
+          }
+        }
+  
+        .desc {
+          padding-right: 20%;
+        }
+      }
+  
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+  
+        button {
+          padding: 10px 30px;
+        }
+  
+        svg {
+          font-size: 16px;
+        }
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .heading {
+        font-size: 24px;
+      }
+  
+      .description {
+        .info {
+          font-size: 14px;
+  
+          img {
+            height: 14px;
+            padding: 0 8px;
+          }
+        }
+  
+        .desc {
+          padding-right: 10%;
+        }
+      }
+  
+      .buttons {
+        flex-direction: column;
+        gap: 8px;
+  
+        button {
+          padding: 8px 25px;
+        }
+  
+        svg {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  

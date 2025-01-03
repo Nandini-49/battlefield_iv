@@ -1,6 +1,8 @@
-import React, { Key } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./statbox.module.scss";
 
+// Define types for the data
 interface headerType {
   key: string;
   value: string;
@@ -20,143 +22,39 @@ type headingsType = headerType[];
 type statisticsType = statsType[];
 
 const StatBox: React.FC = () => {
-  const headings: headingsType = [
-    {
-      key: "Players",
-      value: "64/64",
-    },
-    {
-      key: "Ping",
-      value: "47ms",
-    },
-    {
-      key: "Tickrate",
-      value: "60Hz",
-    },
-  ];
+  const [headings, setHeadings] = useState<headingsType>([]);
+  const [stats, setStats] = useState<statisticsType>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const stats: statisticsType = [
-    {
-      title: "Settings",
-      contents: [
-        {
-          key: "Region",
-          value: "Europe - DE",
-        },
-        {
-          key: "Punkbuster",
-          value: "ON",
-        },
-        {
-          key: "Fairfight",
-          value: "ON",
-        },
-        {
-          key: "Password",
-          value: "ON",
-        },
-        {
-          key: "Preset",
-          value: "Normal",
-        },
-      ],
-    },
-    {
-      title: "Advanced",
-      contents: [
-        {
-          key: "Minimap",
-          value: "ON",
-        },
-        {
-          key: "Only Squad Leader Spawn",
-          value: "ON",
-        },
-        {
-          key: "Vehicles",
-          value: "ON",
-        },
-        {
-          key: "Team Balance",
-          value: "ON",
-        },
-        {
-          key: "Minimap Spotting",
-          value: "ON",
-        },
-        {
-          key: "HUD",
-          value: "ON",
-        },
-        {
-          key: "3P Vehicle Cam",
-          value: "ON",
-        },
-        {
-          key: "Regenerative Health",
-          value: "ON",
-        },
-        {
-          key: "Kill Camp",
-          value: "ON",
-        },
-        {
-          key: "Friendly Fire",
-          value: "ON",
-        },
-        {
-          key: "3D Spotting",
-          value: "ON",
-        },
-        {
-          key: "Enemy Nametags",
-          value: "ON",
-        },
-      ],
-    },
-    {
-      title: "Rules",
-      contents: [
-        {
-          key: "Tickets",
-          value: "400",
-        },
-        {
-          key: "Vehicle Spawn Delay",
-          value: "25",
-        },
-        {
-          key: "Bullet Damage",
-          value: "100",
-        },
-        {
-          key: "Kick after Team Kills",
-          value: "5",
-        },
-        {
-          key: "Player Health",
-          value: "100",
-        },
-        {
-          key: "Player Respawn Time",
-          value: "100",
-        },
-        {
-          key: "Kick after Idle",
-          value: "300",
-        },
-        {
-          key: "Ban after kicks",
-          value: "3",
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    // Fetch data from the API
+    axios.get("http://localhost:3000/api/statistics") // Adjust the URL as needed
+      .then((response) => {
+        // Assume response contains both headings and statistics
+        setHeadings(response.data.headings); // Modify based on your API response structure
+        setStats(response.data.statistics); // Modify based on your API response structure
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to fetch data from the server");
+        setLoading(false);
+      });
+  }, []);
+
+  // Loading and error handling
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        {headings.map((heading: headerType, index: Key) => (
+        {headings.map((heading: headerType, index: number) => (
           <div className={styles.items} key={index}>
             <p>{heading.key}</p>
             <h3>{heading.value}</h3>
@@ -165,21 +63,17 @@ const StatBox: React.FC = () => {
       </div>
 
       <div className={styles.stats}>
-        {stats.map((stat: statsType, index: Key) => {
-          return (
-            <div className={styles.rows} key={index}>
-              <h4>{stat.title}</h4>
-              {stat.contents.map((item: data, index: Key) => {
-                return (
-                  <div key={index}>
-                    <p style={{ float: "left" }}>{item.key}</p>
-                    <p style={{ float: "right" }}>{item.value}</p>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        {stats.map((stat: statsType, index: number) => (
+          <div className={styles.rows} key={index}>
+            <h4>{stat.title}</h4>
+            {stat.contents.map((item: data, index: number) => (
+              <div key={index}>
+                <p style={{ float: "left" }}>{item.key}</p>
+                <p style={{ float: "right" }}>{item.value}</p>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
