@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       </h1>
       <div className={styles.description}>
         <p className={styles.info}>
-          <img src="/src/assets/flag.png" alt="german flag" />
+          <img src="/assets/flag.png" alt="german flag" />
           conquest large - siege of shanghai - normal - 40 hz
         </p>
         <p className={styles.desc}>
