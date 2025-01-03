@@ -9,20 +9,18 @@ interface mapData {
 }
 
 const MapsBox: React.FC = () => {
-  
   const [maps, setMaps] = useState<mapData[]>([]);
 
   useEffect(() => {
-   
     axios
-      .get("http://localhost:3000/api/maps") 
+      .get("https://battlefield-iv-backend-gtac.onrender.com/api/maps")
       .then((response) => {
         setMaps(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []); 
+  }, []);
 
   return (
     <>

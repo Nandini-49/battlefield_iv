@@ -28,15 +28,26 @@ const StatBox: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data from the API
-    axios.get("http://localhost:3000/api/statistics") // Adjust the URL as needed
+    axios
+      .get("https://battlefield-iv-backend-gtac.onrender.com/api/stats")
       .then((response) => {
-        // Assume response contains both headings and statistics
-        setHeadings(response.data.headings); // Modify based on your API response structure
-        setStats(response.data.statistics); // Modify based on your API response structure
+        setStats(response.data);
         setLoading(false);
       })
       .catch((err) => {
+        console.error(err);
+        setError("Failed to fetch data from the server");
+        setLoading(false);
+      });
+
+    axios
+      .get("https://battlefield-iv-backend-gtac.onrender.com/api/headings")
+      .then((response) => {
+        setHeadings(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
         setError("Failed to fetch data from the server");
         setLoading(false);
       });
